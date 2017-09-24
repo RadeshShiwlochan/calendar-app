@@ -2,7 +2,15 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-th, td {
+h1 {
+	padding-bottom:30px;
+}
+ th,td {
 	padding:50px;
 	text-align: center;
+	border: 1px solid black;
+}
+
+.center-calendar {
+	margin: 0 auto;
 }
