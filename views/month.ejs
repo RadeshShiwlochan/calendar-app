@@ -1,15 +1,12 @@
-<!Doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title> Month </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/monthStyles.css">
+    <% include ./partials/head %>
 </head>
-
 <body>
+    <header>
+        <% include ./partials/header %>
+    </header>
     <div class="container">
         <div class="row center-calendar">
             <div class="col-md-8">
@@ -25,45 +22,45 @@
                         <th>Sat</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
+                        <td><a href="/day" id="one">1</a></td>
+                        <td><a href="/day" id="two">2</a></td>
+                        <td><a href="/day" id="three">3</a></td>
+                        <td><a href="/day" id="four">4</a></td>
+                        <td><a href="/day" id="five">5</a></td>
+                        <td><a href="/day" id="six">6</a></td>
+                        <td><a href="/day" id="seven">7</a></td>
                     </tr>
                     <tr>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
+                        <td><a href="/day" id="eight">8</a></td>
+                        <td><a href="/day" id="nine">9</a></td>
+                        <td><a href="/day" id="ten">10</a></td>
+                        <td><a href="/day" id="eleven">11</a></td>
+                        <td><a href="/day" id="twelve">12</a></td>
+                        <td><a href="/day" id="thirteen">13</a></td>
+                        <td><a href="/day" id="fourteen">14</a></td>
                     </tr>
                     <tr>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
+                        <td><a href="/day" id="fifteen">15</a></td>
+                        <td><a href="/day" id="sixteen">16</a></td>
+                        <td><a href="/day" id="seventeen">17</a></td>
+                        <td><a href="/day" id="eighteen">18</a></td>
+                        <td><a href="/day" id="nineteen">19</a></td>
+                        <td><a href="/day" id="twenty">20</a></td>
+                        <td><a href="/day" id="twenty-one">21</a></td>
                     </tr>
                     <tr>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
+                        <td><a href="/day" id="twenty-two">22</a></td>
+                        <td><a href="/day" id="twenty-three">23</a></td>
+                        <td><a href="/day" id="twenty-four">24</a></td>
+                        <td><a href="/day" id="twenty-five">25</a></td>
+                        <td><a href="/day" id="twenty-six">26</a></td>
+                        <td><a href="/day" id="twenty-seven">27</a></td>
+                        <td><a href="/day" id="twenty-eight">28</a></td>
                     </tr>
                     <tr>
-                        <td>29</td>
-                        <td>30</td>
-                        <td>31</td>
+                        <td><a href="/day" id="twenty-nine">29</a></td>
+                        <td><a href="/day" id="thirty">30</a></td>
+                        <td><a href="/day" id="thirty-one">31</a></td>
                         <td>1</td>
                         <td>2</td>
                         <td>3</td>
@@ -76,6 +73,10 @@
             </div>    
         </div>
     </container>
+    <footer> <% include ./partials/footer %> </footer>
+    <script type="text/javascript">
+        var date = "twenty";
+        document.getElementById(date).style.color = "red";
+    </script>
 </body>
-
 </html>

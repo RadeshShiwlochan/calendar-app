@@ -1,3 +1,5 @@
+let numToWords = require('number-to-words'); 
+
 let getCurrDay = () => {
     let currentDay = new Date();
     let daysOfWeek = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
@@ -22,8 +24,13 @@ let getCurrMonth = () => {
 	return monthNames[currentMonth];                  
 }
 
+let numberSpelling = (num) => {
+    return numToWords.toWords(num);
+}
+
 module.exports = {
 	getCurrDay,
 	getCurrDate,
-	getCurrMonth
+	getCurrMonth,
+	numberSpelling
 };
