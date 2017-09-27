@@ -13,6 +13,7 @@ MongoClient.connect(connectStr, (err, database)=>{
 
 
 router.get('/day', (req, res) => {
+	// Reference : https://stackoverflow.com/questions/26278077/node-js-get-id-of-href-in-app-js
 	let date = req.query.id;
 	console.log("This is the date in day-routes", date);
 	res.render('day', { date : date });
