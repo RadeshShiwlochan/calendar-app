@@ -44,3 +44,7 @@ h1 {
  .navbar-inverse .navbar-brand {
  	color:white;
  }
+
+ .badge {
+ 	background-color:red;
+ }
