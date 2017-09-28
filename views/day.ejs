@@ -18,11 +18,11 @@
 	<div class="container">
 	    <div class="row">
 	    	<div class="col-md-4 col-md-offset-4">
-	    		<form action="" method="POST">
+	    		<form action="/scheduleEvent" method="post">
 	    			<label for="startTime"></label>
-	    			<input type="time" id="startTime" value="startTime" placeholder="start" required="true">
+	    			<input type="time" id="startTime" name="startTime" value="startTime" placeholder="start" required="true">
 	    			<label for="endTime" for="endTime"></label> 
-	    			<input type="time" id="endTime"   value="endTime"   placeholder="end"   required="true">
+	    			<input type="time" id="endTime"   name="endTime" value="endTime"   placeholder="end"   required="true">
 	    			<button class="btn btn-danger btn-lg">Schedule</button>
 	    		</form>	
 	        </div>		

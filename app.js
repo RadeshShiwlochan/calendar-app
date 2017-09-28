@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 app.set('view engine', 'ejs');
 app.use('/', monthRoutes);
 app.get('/day', dayRoutes);
-
+app.post('/scheduleEvent', dayRoutes);
 
 app.listen(3000, () => {
 	console.log("Listening on port:3000");
