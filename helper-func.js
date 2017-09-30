@@ -1,4 +1,5 @@
 let numToWords = require('number-to-words'); 
+const { URL, URLSearchParams } = require('url'); 
 
 let getCurrDay = () => {
     let currentDay = new Date();
@@ -28,9 +29,18 @@ let numberSpelling = (num) => {
     return numToWords.toWords(num);
 }
 
+let getIdFromURL = (req) => {
+   let url = req.originalUrl;
+   // const myURL = new URL(url);
+   // return myURL.searchParams.get('id');
+   console.log("this is the url ", url);
+   return url;
+}
+
 module.exports = {
 	getCurrDay,
 	getCurrDate,
 	getCurrMonth,
-	numberSpelling
+	numberSpelling,
+	getIdFromURL
 };
