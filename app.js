@@ -1,9 +1,9 @@
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const app = express();
+const app        = express();
 
-const monthRoutes = require('./routes/month-routes');
-const dayRoutes = require('./routes/day-routes');
+const monthRoutes      = require('./routes/month-routes');
+const dayRoutes        = require('./routes/day-routes');
 const schedEventRoutes = require('./routes/schedEvent-routes');
 
 app.use(express.static('public'));
