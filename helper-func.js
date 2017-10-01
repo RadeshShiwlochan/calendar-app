@@ -1,4 +1,7 @@
 let numToWords = require('number-to-words'); 
+let MongoClient = require('mongodb').MongoClient;
+const connectStr = 'mongodb://localhost:27017/calendar';
+let db;
 
 let getCurrDay = () => {
     let currentDay = new Date();
@@ -28,9 +31,20 @@ let numberSpelling = (num) => {
     return numToWords.toWords(num);
 }
 
+let createEvent = (req, cDate) => {
+	//Reference used: https://stackoverflow.com/questions/27513504/push-to-mongodb-array-using-dynamic-key
+	let startTime   = req.body.startTime;
+	let endTime     = req.body.endTime;
+	let descriptOfEvent = req.body.description;
+	let newEvent = {};
+	newEvent["October.days." + cDate] = {start : startTime, end: endTime, description : descriptOfEvent };
+	return newEvent;
+}
+
 module.exports = {
 	getCurrDay,
 	getCurrDate,
 	getCurrMonth,
-	numberSpelling
+	numberSpelling,
+	createEvent
 };
