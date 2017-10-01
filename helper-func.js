@@ -48,18 +48,16 @@ let createEvent = (req, cDate) => {
 }
 
 let getAllEvents = () => {
-    db.collection('profile').findOne({ username: "radesh0430" }).
-        then( function (eventsInOct)  {
-        	if (!eventsInOct ) {
-        		//console.dir(eventsInOct);
-        		return null;
-        	}
-        	else {	
-        	    //console.log("in else");
-        	    //console.dir(eventsInOct);	
-        	   return eventsInOct.days;
-        	}    
-        });
+	return new Promise(function(resolve, reject) {
+	    let profileObj = db.collection('profile').findOne({ username: "radesh0430" });
+	    	resolve(profileObj);
+	});         
+}
+
+let retrieveObj = (obj) => {
+   console.log("in retrieve obj")
+   console.dir(obj);
+   return obj; 
 }
 
 module.exports = {
@@ -68,7 +66,8 @@ module.exports = {
 	getCurrMonth,
 	numberSpelling,
 	createEvent,
-	getAllEvents
+	getAllEvents,
+	retrieveObj
 };
 
 

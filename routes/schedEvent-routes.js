@@ -5,34 +5,14 @@ const helperFunc = require('../helper-func.js');
 
 //pass object here to the view
 router.get('/schedEvents', (req, res) => {
-    //let allEvents = helperFunc.getAllEvents();
-    
-     let allEvents = {
-        	one: 
-        	    [
-        			{
-        				start: "5:00:PM",
-        				end: "6:00:PM",
-        				des: "party"
-        			},
-        			{
-        				start: "8:00:AM",
-        				end: "10:00:PM",
-        				des: "watch tv"
-        			}
-        		],
-        	two: [],
-        	three: 
-        	   [ 
-                  {
-                  	   start: "7:00:AM",
-                  	   end: "8:00:PM",
-                  	   des: "sleep"
-                  }
-
-             	]		
-        }	   
-    res.render('schedEvents', { allEvents: allEvents });
+    let events = helperFunc.getAllEvents()
+    .then(function(eventObj) {
+    	console.log(eventObj.October.days);
+    	let allEvents = eventObj.October.days;
+    	res.render('schedEvents', { allEvents: allEvents });
+    }, function(error) {
+    	console.log('error: ', error);
+    });    
 });
 
 module.exports = router;
