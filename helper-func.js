@@ -47,10 +47,21 @@ let createEvent = (req, cDate) => {
 	db.collection('profile').update( { username : username }, { $push :  newEvent });
 }
 
+let getAllEvents = () => {
+    let eventsInOct = db.collection('profile').findOne({ username: "radesh0430"});
+	let dayObj = eventsInOct.days;
+	return dayObj;
+}
+
 module.exports = {
 	getCurrDay,
 	getCurrDate,
 	getCurrMonth,
 	numberSpelling,
-	createEvent
+	createEvent,
+	getAllEvents
 };
+
+
+
+
