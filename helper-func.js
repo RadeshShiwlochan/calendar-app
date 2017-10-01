@@ -1,13 +1,13 @@
 let numToWords = require('number-to-words'); 
-let MongoClient = require('mongodb').MongoClient;
-const connectStr = 'mongodb://localhost:27017/calendar';
-let db;
+//let MongoClient = require('mongodb').MongoClient;
+//const connectStr = 'mongodb://localhost:27017/calendar';
+let db = require('./database/index.js');
 
-MongoClient.connect(connectStr, (err, database)=>{
-    if (err) throw err;
-    console.log("Successfully connected to the database");
-    db = database;
-});
+// MongoClient.connect(connectStr, (err, database)=>{
+//     if (err) throw err;
+//     console.log("Successfully connected to the database");
+//     db = database;
+// });
 
 let getCurrDay = () => {
     let currentDay = new Date();
@@ -44,7 +44,7 @@ let createEvent = (req, cDate) => {
 	let descriptOfEvent = req.body.description;
 	let newEvent = {};
 	newEvent["October.days." + cDate] = {start : startTime, end: endTime, description : descriptOfEvent };
-	db.collection('profile').update( { username : username }, { $push :  newEvent });
+	db.Mongoose.collection('profile').update( { username : username }, { $push :  newEvent });
 }
 
 let getAllEvents = () => {
