@@ -11,24 +11,27 @@
     <div class="container">
     	<div class="row">
     		<div class="col-md-12">
-    			 <h1> All Events in your Calendar </h1>
+    			 <h1 class="centerHeading"> All Events in your Calendar </h1>
     		</div>
     	</div>
     </div>
     <div class="container">
-    	<div class="row">
-    		<div class="col-md-12">
-    			<% for ( var event in allEvents ) { %>
-    			    <% for ( var x = 0; x < allEvents[event].length; ++x ) { %>
-    			<p> 
-    				<%= allEvents[event][x]['start'] %> 
-    				<%= allEvents[event][x]['end'] %> 
-    				<%= allEvents[event][x]['des'] %> 
-    			</p>
-    			    <% } %>
-    			<% } %>
-    		</div>
-    	</div>
+    	<div class="jumbotron">
+	    	<div class="row">
+	    		<div class="col-md-12">
+	    			<% for ( var event in allEvents ) { %>
+	    			    <% for ( var x = 0; x < allEvents[event].length; ++x ) { %>
+			    			<h3 class="addPadding"> 
+			    				<%= allEvents[event][x]['start'] %>     
+			    				<%= allEvents[event][x]['end'] %> 
+			    				<%= allEvents[event][x]['des'] %> 
+			    			</h3>
+			    			<hr>
+	    			    <% } %>
+	    			<% } %>
+	    		</div>
+	    	</div>
+        </div>
     </div>
     <footer> <% include ./partials/footer %> </footer>
 </body>

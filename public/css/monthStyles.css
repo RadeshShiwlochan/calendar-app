@@ -48,3 +48,11 @@ h1 {
  .badge {
  	background-color:red;
  }
+
+ .centerHeading {
+ 	text-align: center;
+ }
+
+ .addPadding {
+ 	padding-left: 10%;
+ }

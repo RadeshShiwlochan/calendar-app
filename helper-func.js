@@ -48,9 +48,18 @@ let createEvent = (req, cDate) => {
 }
 
 let getAllEvents = () => {
-    let eventsInOct = db.collection('profile').findOne({ username: "radesh0430"});
-	let dayObj = eventsInOct.days;
-	return dayObj;
+    db.collection('profile').findOne({ username: "radesh0430" }).
+        then( function (eventsInOct)  {
+        	if (!eventsInOct ) {
+        		//console.dir(eventsInOct);
+        		return null;
+        	}
+        	else {	
+        	    //console.log("in else");
+        	    //console.dir(eventsInOct);	
+        	   return eventsInOct.days;
+        	}    
+        });
 }
 
 module.exports = {

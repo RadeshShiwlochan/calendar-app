@@ -5,10 +5,9 @@ const helperFunc = require('../helper-func.js');
 
 //pass object here to the view
 router.get('/schedEvents', (req, res) => {
-    let allEvents = helperFunc.getAllEvents();
-    for ( var event in allEvents )
-        console.log("this is the event " , allEvents[event]);
-        allEvents = {
+    //let allEvents = helperFunc.getAllEvents();
+    
+     let allEvents = {
         	one: 
         	    [
         			{
@@ -32,7 +31,7 @@ router.get('/schedEvents', (req, res) => {
                   }
 
              	]		
-        }	
+        }	   
     res.render('schedEvents', { allEvents: allEvents });
 });
 

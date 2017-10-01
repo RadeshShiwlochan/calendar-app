@@ -15,7 +15,7 @@ router.get('/day', (req, res) => {
 });
 
 router.post('/scheduleEvent', (req, res) => {
-	let newEvent = helperFunc.createEvent(req, cDate);
+	helperFunc.createEvent(req, cDate);
 	res.render('month', { day: helperFunc.getCurrDay(), date: helperFunc.getCurrDate(), month: helperFunc.getCurrMonth()});
 });
 
