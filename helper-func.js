@@ -3,6 +3,12 @@ let MongoClient = require('mongodb').MongoClient;
 const connectStr = 'mongodb://localhost:27017/calendar';
 let db;
 
+MongoClient.connect(connectStr, (err, database)=>{
+    if (err) throw err;
+    console.log("Successfully connected to the database");
+    db = database;
+});
+
 let getCurrDay = () => {
     let currentDay = new Date();
     let daysOfWeek = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
@@ -27,18 +33,18 @@ let getCurrMonth = () => {
 	return monthNames[currentMonth];                  
 }
 
-let numberSpelling = (num) => {
-    return numToWords.toWords(num);
-}
+let numberSpelling = (num) => { return numToWords.toWords(num); }
+
 
 let createEvent = (req, cDate) => {
 	//Reference used: https://stackoverflow.com/questions/27513504/push-to-mongodb-array-using-dynamic-key
+	let username = "radesh0430";
 	let startTime   = req.body.startTime;
 	let endTime     = req.body.endTime;
 	let descriptOfEvent = req.body.description;
 	let newEvent = {};
 	newEvent["October.days." + cDate] = {start : startTime, end: endTime, description : descriptOfEvent };
-	return newEvent;
+	db.collection('profile').update( { username : username }, { $push :  newEvent });
 }
 
 module.exports = {
