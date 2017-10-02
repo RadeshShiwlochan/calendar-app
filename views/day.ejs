@@ -11,7 +11,7 @@
     <div class="container">
     	<div class="row">
     		<div class="col-md-4 col-md-offset-4 text-center">
-    			<h1>Today's Schedule <%= date%></h1>
+    			<h1>Today's Schedule </h1>
     		</div>
     	</div>		
     </div>
@@ -19,6 +19,7 @@
 	    <div class="row">
 	    	<div class="col-md-4 col-md-offset-4" id="schedEvent">
 	    		<form action="/scheduleEvent" method="post">
+
 	    			<label for="startTime">start time  </label>
 	    			<input type="time" id="startTime" name="startTime" value="startTime" placeholder="start" required="true">
 	    			<br>
@@ -35,6 +36,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
+				<% for ( var i = 0; i < eventsSchedOnDay.length; ++i ) { %>
+				       <% var event = eventsSchedOnDay[i]; %>
+				       <h3>
+				       	10 - 
+				       	<%= event['date'] %>
+				       	<%= event['start'] %>
+				       	-
+				       	<%= event['end'] %>
+				       	<%= event['description'] %>
+				       </h3>
+				<% } %>       
 			</div>
 		</div>
 	</div>   	
