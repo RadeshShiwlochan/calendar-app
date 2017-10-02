@@ -92,7 +92,7 @@ let createProfile = () => {
  This function creates an object of an event that a user creates for a the day 
  the user clicked on.
 */
-let createEvent = ( req, cDate ) => {
+let createEvent = ( res, req, cDate ) => {
 	//Reference used: https://stackoverflow.com/questions/27513504/push-to-mongodb-array-using-dynamic-key
 	let username = "JohnDoe";
 	let startTime   = req.body.startTime;
@@ -101,6 +101,10 @@ let createEvent = ( req, cDate ) => {
 	let newDateStr = cDate.replace(/-/g, " ");
 	let dateNum = wordsToNum.convert( newDateStr );
 	let newEvent = {};
+	if ( startTime.substring( 0, 2 ) === "00" || 
+		 endTime.substring( 0, 2 ) === "00"     ) {
+	     return;
+	}
 	newEvent["October.days." + cDate] = { date: dateNum, start : startTime, end: endTime, description : descriptOfEvent };
 	db.collection('profile').update( { username : username }, { $push :  newEvent });
 }
