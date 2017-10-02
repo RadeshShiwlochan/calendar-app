@@ -22,6 +22,8 @@
 	    			<% for ( var event in allEvents ) { %>
 	    			    <% for ( var x = 0; x < allEvents[event].length; ++x ) { %>
 			    			<h3 class="addPadding"> 
+			    				10 -
+			    				<%= allEvents[event][x]['date'] %>
 			    				<%= allEvents[event][x]['start'] %>
 			    				-     
 			    				<%= allEvents[event][x]['end'] %> 

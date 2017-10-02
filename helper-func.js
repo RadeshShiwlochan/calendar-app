@@ -1,4 +1,5 @@
 let numToWords   = require('number-to-words'); 
+let wordsToNum   = require('words-to-num');
 let MongoClient  = require('mongodb').MongoClient;
 let db;
 const connectStr = 'mongodb://localhost:27017/calendar';
@@ -37,15 +38,70 @@ let getCurrMonth = () => {
 //takes an number as an argument and returns the spelling of that number.
 let numberSpelling = ( num ) => { return numToWords.toWords( num ); }
 
+//creates a profile object for a new user. 
+let createProfile = () => {
+	let profile = {
+		"username": "JohnDoe",
+		"October": {
+			"number": 10,
+			"days": {
+				"one": [],
+				"two": [],
+				"three":[],
+				"four": [],
+				"five":[],
+				"six":[],
+				"seven":[],
+				"eight":[],
+				"nine":[],
+				"ten":[],
+				"eleven":[],
+				"twelve":[],
+				"thirteen":[],
+				"fourteen":[],
+				"fifteen":[],
+				"sixteen":[],
+				"seventeen":[],
+				"eighteen":[],
+				"nineteen":[],
+				"twenty":[],
+				"twenty-one":[],
+				"twenty-two":[],
+				"twenty-three":[],
+				"twenty-four":[],
+				"twenty-five":[],
+				"twenty-six":[],
+				"twenty-seven":[],
+				"twenty-eight":[],
+				"twenty-nine":[],
+				"thirty":[],
+				"thirty-one":[]
+			}
+		}
+	};
+	getAllEvents().then( ( user ) => {
+       if ( user == undefined ) {
+           db.collection('profile').insertOne(profile);
+       } else if (user !== undefined && user.username !== "JohnDoe" ) {
+       	   db.collection('profile').insertOne(profile);
+       }
+    }, ( error ) => { console.log( 'error: ', error ); }); 
+}
 
+/*
+ This function creates an object of an event that a user creates for a the day 
+ the user clicked on.
+*/
 let createEvent = ( req, cDate ) => {
 	//Reference used: https://stackoverflow.com/questions/27513504/push-to-mongodb-array-using-dynamic-key
-	let username = "radesh0430";
+	let username = "JohnDoe";
 	let startTime   = req.body.startTime;
 	let endTime     = req.body.endTime;
 	let descriptOfEvent = req.body.description;
+	let newDateStr = cDate.replace(/-/g, " ");
+	let dateNum = wordsToNum.convert( newDateStr );
 	let newEvent = {};
-	newEvent["October.days." + cDate] = {start : startTime, end: endTime, description : descriptOfEvent };
+	newEvent["October.days." + cDate] = { date: dateNum, start : startTime, end: endTime, description : descriptOfEvent };
 	db.collection('profile').update( { username : username }, { $push :  newEvent });
 }
 
@@ -55,7 +111,7 @@ let createEvent = ( req, cDate ) => {
 */
 let getAllEvents = () => {
 	return new Promise(function(resolve, reject) {
-	    let profileObj = db.collection('profile').findOne({ username: "radesh0430" });
+	    let profileObj = db.collection('profile').findOne({ username: "JohnDoe" });
 	    	resolve(profileObj);
 	});         
 }
@@ -65,6 +121,7 @@ module.exports = {
 	getCurrDate,
 	getCurrMonth,
 	numberSpelling,
+	createProfile,
 	createEvent,
 	getAllEvents
 };

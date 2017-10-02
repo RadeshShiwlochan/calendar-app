@@ -11,9 +11,9 @@ router.get('/day', (req, res) => {
 	dateClicked = date;
 	let events  = helperFunc.getAllEvents().then( ( event ) => {
 	/*
-		Query the databse and retrieve all events scheduled in October. Then use the id
-		from the route to get the events scheduled on the day that was clicked by user. 
-		Then pass the object to the handler of the day page.
+	Query the databse and retrieve all events scheduled in October. Then use the id
+	from the route to get the events scheduled on the day that was clicked by user. 
+	Then pass the object to the handler of the day page.
 	*/
 	    let eventsSchedOnDay = event.October.days[date];
 	    res.render('day', { date : date, eventsSchedOnDay : eventsSchedOnDay });

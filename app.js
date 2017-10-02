@@ -10,11 +10,11 @@ const loginRoutes      = require( './routes/login-routes');
 app.use(express.static( 'public' ));
 app.use(bodyParser.urlencoded( {extended: true } ));
 app.set( 'view engine', 'ejs' );
-app.use( '/', monthRoutes );
+app.use( '/', loginRoutes );
+app.get( '/month', monthRoutes );
 app.get( '/day', dayRoutes );
 app.post( '/scheduleEvent', dayRoutes );
 app.get( '/schedEvents', schedEventRoutes );
-app.get( '/', loginRoutes );
 app.post( '/calendarView', loginRoutes );
 
 app.listen(3000, () => {

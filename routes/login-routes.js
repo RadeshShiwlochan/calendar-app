@@ -11,6 +11,7 @@ router.post('/calendarView', ( req, res ) => {
 	let currDay = helperFunc.getCurrDay();
 	let currDate = helperFunc.getCurrDate();
 	let currMonth = helperFunc.getCurrMonth();
+	helperFunc.createProfile();
 	res.render( 'month', { day: currDay, date: currDate, month: currMonth } );
 })
 
